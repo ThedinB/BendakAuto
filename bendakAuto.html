@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Váš Název Firmy] – Specialista na staré turbodiesely</title>
+    <meta name="description" content="Profesionální úpravy, montáže intercoolerů a optimalizace výkonu pro starší turbodieselové vozy. Vraťte svému motoru sílu a spolehlivost.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- ZÁKLADNÍ NASTAVENÍ A BAREVNÁ PALETA --- */
+        :root {
+            --color-primary: #f39c12; /* Výrazná oranžová (akcent) */
+            --color-dark: #1a1a1a;
+            --color-medium: #2c2c2c;
+            --color-light: #f4f4f4;
+            --color-text: #cccccc;
+            --font-main: 'Roboto', sans-serif;
+            --font-headings: 'Titillium Web', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main);
+            background-color: var(--color-dark);
+            color: var(--color-text);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* --- OBECNÉ STYLY --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+        
+        section:nth-of-type(odd) {
+            background-color: var(--color-medium);
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-headings);
+            color: white;
+            margin-top: 0;
+        }
+
+        h1 { font-size: 3.5rem; text-align: center; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 60px; }
+        h3 { font-size: 1.8rem; color: var(--color-primary); margin-bottom: 20px;}
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: white;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: var(--color-dark);
+            font-weight: bold;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e88e0b;
+            color: var(--color-dark);
+            transform: translateY(-3px);
+        }
+
+        /* --- HLAVIČKA A NAVIGACE --- */
+        .main-header {
+            background-color: rgba(26, 26, 26, 0.9);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-headings);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .logo span {
+            color: var(--color-primary);
+        }
+
+        .main-nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+        }
+
+        .main-nav ul li {
+            margin-left: 25px;
+        }
+
+        .main-nav ul li a {
+            color: var(--color-light);
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .main-nav ul li a:hover, .main-nav ul li a.active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-primary);
+        }
+
+        /* --- SEKCE: DOMŮ (HERO) --- */
+        #home {
+            background: linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.8)), url('https://placehold.co/1920x1080/2c2c2c/cccccc?text=Foto+motoru') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        #home .hero-content {
+            max-width: 800px;
+        }
+        
+        #home h1 {
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* --- SEKCE: O NÁS --- */
+        #about-us .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        #about-us ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        #about-us ul li {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23f39c12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>') no-repeat left center;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        #about-us ul li strong {
+            color: white;
+        }
+
+        /* --- SEKCE: SLUŽBY --- */
+        .service-benefits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .benefit-card {
+            background-color: var(--color-dark);
+            padding: 30px;
+            border-radius: 5px;
+            border-left: 5px solid var(--color-primary);
+        }
+        .benefit-card h4 {
+            margin-top: 0;
+            font-family: var(--font-headings);
+            font-size: 1.4rem;
+            color: white;
+        }
+        
+        .work-process ol {
+            list-style: none;
+            counter-reset: step-counter;
+            padding: 0;
+        }
+        .work-process li {
+            counter-increment: step-counter;
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 60px;
+        }
+        .work-process li::before {
+            content: '0' counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-primary);
+            font-family: var(--font-headings);
+        }
+        .work-process li strong {
+            display: block;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        /* --- SEKCE: GALERIE --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 1;
+            transition: opacity 0.4s ease;
+        }
+        .gallery-item p {
+            color: white;
+            font-weight: bold;
+            margin: 0;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        .gallery-item:hover .gallery-overlay p {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* --- SEKCE: KONTAKT --- */
+        #contact .container {
+            text-align: center;
+        }
+        .contact-form {
+            max-width: 700px;
+            margin: 40px auto 0 auto;
+            text-align: left;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--color-medium);
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: var(--color-light);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .contact-details div {
+            font-size: 1.1rem;
+        }
+        .contact-details div strong {
+            color: var(--color-primary);
+        }
+
+        /* --- ZÁPATÍ (FOOTER) --- */
+        .main-footer {
+            background-color: #111;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .disclaimer {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: var(--color-dark);
+        }
+        .disclaimer h4 {
+            color: var(--color-primary);
+            margin-top: 0;
+        }
+        .disclaimer p {
+            font-size: 0.9rem;
+            color: #aaa;
+            line-height: 1.5;
+        }
+        .copyright {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* --- RESPONZIVNÍ DESIGN --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            section { padding: 60px 0; }
+            
+            .main-header .container {
+                flex-direction: column;
+            }
+            .main-nav ul {
+                margin-top: 15px;
+            }
+            .main-nav ul li {
+                margin: 0 10px;
+            }
+            
+            #about-us .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-benefits {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======== HLAVIČKA A NAVIGACE ======== -->
+    <header class="main-header">
+        <div class="container">
+            <a href="#home" class="logo">[Váš Název Firmy]<span>.</span></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#about-us">O nás</a></li>
+                    <li><a href="#services">Naše Služby</a></li>
+                    <li><a href="#gallery">Galerie</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ======== SEKCE 1: ÚVODNÍ BANNER (HERO) ======== -->
+        <section id="home">
+            <div class="hero-content">
+                <h1>Navraťte svému turbodieselu sílu a efektivitu</h1>
+                <p>Specializujeme se na optimalizaci výkonu a spolehlivosti starších turbodieselových vozidel. S námi získá váš vůz novou chuť do života.</p>
+                <a href="#services" class="cta-button">Zjistit více</a>
+            </div>
+        </section>
+
+        <!-- ======== SEKCE 2: O NÁS ======== -->
+        <section id="about-us">
+            <div class="container">
+                <h2>Kdo jsme a proč nám věřit</h2>
+                <div class="about-content">
+                    <div>
+                        <h3>Vášeň a desítky let zkušeností</h3>
+                        <p>Jsme tým zkušených mechaniků, kteří se v automobilovém průmyslu pohybují již desítky let. Naše vášeň pro mechaniku, zvláště pro robustní a spolehlivé turbodiesely starší generace, nás vedla k založení této specializované dílny.</p>
+                        <p>Díky našemu hlubokému porozumění těmto motorům, individuálnímu přístupu a preciznosti v každém detailu, jsme schopni nabídnout řešení, která běžné servisy často opomíjejí nebo je neumí realizovat. Nestojíme jen na znalostech, ale i na lásce k tomu, co děláme.</p>
+                    </div>
+                    <div>
+                        <h3>Proč si vybrat právě nás?</h3>
+                        <ul>
+                            <li><strong>20 let zkušeností v oboru:</strong> Víme, co děláme.</li>
+                            <li><strong>Specializace na starší turbodiesely:</strong> Nerozebíráme motor vašeho vozu poprvé.</li>
+                            <li><strong>Individuální přístup:</strong> Každý projekt je pro nás jedinečný.</li>
+                            <li><strong>Kvalita a spolehlivost:</strong> Používáme jen prověřené díly a materiály.</li>
+                            <li><strong>Transparentnost:</strong> Vždy vás plně informujeme o průběhu práce.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== SEKCE 3: NAŠE SLUŽBY ======== -->
+        <section id="services">
+            <div class="container">
+                <h2>Naše klíčová služba: Profesionální úpravy</h2>
+                <p style="text-align: center; max-width: 800px; margin: -40px auto 60px auto;">Váš turbodiesel je navržen tak, aby pracoval pod tlakem, ale teplota stlačeného vzduchu může výrazně ovlivnit jeho výkon a životnost. Naše hlavní specializace spočívá v odborné dodatečné montáži intercoolerů a následné optimalizaci celého systému.</p>
+                
+                <h3>Co montáž intercooleru přináší vašemu vozu:</h3>
+                <div class="service-benefits">
+                    <div class="benefit-card">
+                        <h4>Znatelné zvýšení výkonu</h4>
+                        <p>Díky ochlazení stlačeného vzduchu se do motoru dostane více kyslíku. To umožňuje efektivnější spalování a vede k citelnému nárůstu výkonu, zejména v nízkých a středních otáčkách.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>Snížení spotřeby paliva</h4>
+                        <p>Efektivnější spalování se pozitivně projeví i na spotřebě paliva, což oceníte především na delších trasách a při větší zátěži.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>Prodloužení životnosti motoru</h4>
+                        <p>Chladnější vzduch na vstupu znamená nižší teploty spalování uvnitř motoru, což snižuje tepelné namáhání komponent a prodlužuje celkovou životnost.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>Snížení kouřivosti</h4>
+                        <p>Lepší prohoření paliva díky optimálnímu poměru vzduchu a nafty vede k redukci viditelné kouřivosti z výfuku, což přispívá i k lepšímu výsledku na STK.</p>
+                    </div>
+                </div>
+
+                <h3>Jak pracujeme – náš komplexní přístup:</h3>
+                <div class="work-process">
+                    <ol>
+                        <li><strong>Důkladná diagnostika a konzultace:</strong> Každý projekt začíná podrobnou konzultací. Posoudíme stav vašeho vozidla, prodiskutujeme vaše očekávání a navrhneme optimální řešení.</li>
+                        <li><strong>Individuální návrh a výroba:</strong> Nenabízíme univerzální řešení. Navrhujeme a vyrábíme custom potrubí přímo na míru vašemu vozidlu s ohledem na maximální efektivitu a minimální tlakové ztráty.</li>
+                        <li><strong>Precizní instalace a optimalizace:</strong> Intercooler odborně umístíme a provedeme precizní doladění mechanického vstřikovacího čerpadla a nastavení turba pro maximální využití potenciálu.</li>
+                        <li><strong>Volitelná instalace budíků:</strong> Pro maximální kontrolu nabízíme instalaci budíků pro tlak turba a teplotu výfukových plynů (EGT), abyste měli neustálý přehled o klíčových parametrech.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== SEKCE 4: GALERIE ======== -->
+        <section id="gallery">
+            <div class="container">
+                <h2>Naše práce v obrazech</h2>
+                <p style="text-align: center; max-width: 800px; margin: -40px auto 60px auto;">Podívejte se na ukázky našich realizací. Každá fotografie představuje individuální řešení navržené na míru konkrétnímu vozu a požadavkům jeho majitele.</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/600x400/f39c12/1a1a1a?text=Před+Úpravou" alt="Vůz před úpravou">
+                        <div class="gallery-overlay"><p>VW T4 2.4D - Původní stav</p></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/600x400/2c2c2c/ffffff?text=Po+Úpravě" alt="Vůz po úpravě">
+                        <div class="gallery-overlay"><p>VW T4 2.4D - Po montáži intercooleru</p></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/600x400/2c2c2c/ffffff?text=Detail+Potrubí" alt="Detail potrubí">
+                        <div class="gallery-overlay"><p>Custom hliníkové potrubí na míru</p></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/600x400/f39c12/1a1a1a?text=Off-road+projekt" alt="Projekt Off-road">
+                        <div class="gallery-overlay"><p>Úprava pro off-road speciál</p></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/600x400/2c2c2c/ffffff?text=Dodávka" alt="Projekt dodávka">
+                        <div class="gallery-overlay"><p>Zvýšení výkonu pracovní dodávky</p></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/600x400/f39c12/1a1a1a?text=Detail+Motoru" alt="Detail motoru po úpravě">
+                        <div class="gallery-overlay"><p>Čistá a profesionální instalace</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== SEKCE 5: KONTAKT ======== -->
+        <section id="contact">
+            <div class="container">
+                <h2>Kontaktujte nás ještě dnes!</h2>
+                <p>Dopřejte svému motoru to nejlepší. Napište nám nebo zavolejte pro nezávaznou konzultaci.</p>
+                
+                <form action="#" method="post" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Vaše jméno" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Váš e-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="car_model" placeholder="Značka a model vozidla">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="6" placeholder="Vaše zpráva nebo dotaz" required></textarea>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="cta-button">Odeslat poptávku</button>
+                    </div>
+                </form>
+
+                <div class="contact-details">
+                    <div><strong>Telefon:</strong> <a href="tel:+420123456789">[+420 123 456 789]</a></div>
+                    <div><strong>E-mail:</strong> <a href="mailto:info@vasadomena.cz">[info@vasadomena.cz]</a></div>
+                    <div><strong>Adresa:</strong> [Ulice 123, Město, PSČ]</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======== ZÁPATÍ ======== -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="disclaimer">
+                <h4>Důležité upozornění (legislativa)</h4>
+                <p>Rádi bychom upozornili, že dodatečná montáž intercooleru a úpravy motoru jsou individuální technické změny, které nejsou zapsány ve velkém technickém průkazu vozidla. Tyto úpravy nemusí být schváleny pro provoz na pozemních komunikacích v České republice a mohou být důvodem k neúspěšnému absolvování technické kontroly (STK) nebo problémům při silniční kontrole. Před zahájením práce vás vždy podrobně seznámíme se všemi riziky a je na vašem rozhodnutí, zda se pro úpravu rozhodnete. Naší prioritou je bezpečnost a informovanost zákazníka.</p>
+            </div>
+            <p class="copyright">© 2025 [Váš Název Firmy]. Všechna práva vyhrazena.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

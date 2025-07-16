@@ -3,261 +3,1169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Váš Název Firmy] | Mechanická Dokonalost</title>
-    <meta name="description" content="Precizní mechanické úpravy starších turbodieselů pro náročné. Kombinujeme starou školu s moderní precizností.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
+    <title>BendakAuto | Diesel Tuning s Duší</title>
     <style>
+        /* 👨‍🔧 NETRADIČNÍ STYL 👨‍🔧 */
         :root {
-            --color-bg: #121212;
-            --color-text: #e0e0e0;
-            --color-text-secondary: #aaaaaa;
-            --color-accent: #D4AF37; /* Zlatý akcent */
-            --font-body: 'Montserrat', sans-serif;
-            --font-display: 'Playfair Display', serif;
+            --diesel-blue: #1a3e72;
+            --mechanic-red: #c33;
+            --oil-black: #222;
+            --grease-yellow: #e8b600;
+            --steel-gray: #7d7d7d;
+            --paper-white: #f8f8f8;
+            --rust-orange: #b94700;
         }
-        
+
+        @font-face {
+            font-family: 'DieselFont';
+            src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            margin: 0;
-            font-family: var(--font-body);
-            background: var(--color-bg);
-            color: var(--color-text);
-        }
-        
-        /* Základní kontejner a mřížka */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 30px;
+            font-family: 'Courier New', monospace;
+            background-color: var(--paper-white);
+            color: var(--oil-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/brushed-alum-dark.png');
         }
 
-        /* Sekce a Asymetrický layout */
-        .section {
-            padding: 120px 0;
-        }
-
-        .grid-magazine {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 30px;
-            align-items: center;
-        }
-
-        /* Úvodní "Hero" sekce */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            background-size: cover;
-            background-position: center;
+        /* 🚗 NETRADIČNÍ HEADER 🚗 */
+        .diagonal-header {
             position: relative;
-             /* FOTO: Krásná fotka vašeho nejlepšího projektu */
-            background-image: linear-gradient(to right, rgba(18, 18, 18, 0.9) 0%, rgba(18, 18, 18, 0.2) 100%), url(https://images.unsplash.com/photo-1601362840436-b9b5f92843d7?q=80&w=2070&auto=format&fit=crop);
-        }
-        
-        .hero-content {
-            grid-column: 1 / 7;
-        }
-
-        h1 {
-            font-family: var(--font-display);
-            font-size: 5rem;
-            color: #fff;
-            margin: 0 0 20px 0;
-            line-height: 1.1;
+            height: 100vh;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            background: 
+                linear-gradient(45deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5)),
+                url('https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            padding: 0 10%;
         }
 
-        h1 span {
-            color: var(--color-accent);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            line-height: 1.7;
-            color: var(--color-text-secondary);
-            max-width: 450px;
-        }
-
-        h2 {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            color: #fff;
-            margin: 0;
-            grid-column: 1 / -1;
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        /* Bloky textu a obrázků */
-        .text-block {
-            grid-column: 1 / 6;
+        .header-content {
+            position: relative;
             z-index: 2;
         }
 
-        .text-block.align-right {
-            grid-column: 8 / 13;
-        }
-        
-        .text-block h3 {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            color: var(--color-accent);
-            margin: 0 0 20px 0;
-        }
-        .text-block p {
-            line-height: 1.9;
+        .header-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--grease-yellow);
+            text-shadow: 3px 3px 0 var(--oil-black);
+            line-height: 1.1;
         }
 
-        .image-block {
-            grid-column: 7 / 13;
-            grid-row: 1; /* Zajišťuje, že je na stejném řádku jako text */
-        }
-        .image-block.align-left {
-            grid-column: 1 / 7;
-        }
-
-        .image-block img {
-            width: 100%;
-            display: block;
+        .header-subtitle {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 2rem;
+            border-left: 3px solid var(--mechanic-red);
         }
 
-        /* Citace */
-        .quote-block {
-            grid-column: 2 / 12;
-            text-align: center;
-            padding: 80px 0;
-        }
-        .quote-block p {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            line-height: 1.5;
-            color: #fff;
-            margin: 0;
-        }
-
-        /* Závěrečná sekce a kontakt */
-        .contact-section {
-            background-color: #000;
-            text-align: center;
+        /* 🛠️ ASYMETRICKÁ NAVIGACE 🛠️ */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--oil-black);
+            padding: 1rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        .contact-box h2 {
-            margin-bottom: 20px;
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--grease-yellow);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Orbitron', sans-serif;
         }
-        .contact-box p {
-            font-size: 1.2rem;
-            color: var(--color-text-secondary);
+
+        .logo span {
+            color: white;
         }
-        .contact-info {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            color: var(--color-accent);
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: white;
             text-decoration: none;
-            display: block;
-            margin: 40px 0;
-            transition: color 0.3s;
-        }
-        .contact-info:hover {
-            color: #fff;
-        }
-
-        /* Disclaimer */
-        .disclaimer {
+            font-weight: bold;
+            text-transform: uppercase;
             font-size: 0.9rem;
-            color: #777;
-            padding-top: 80px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        /* Media Queries pro responsivitu */
-        @media(max-width: 992px) {
-            h1 { font-size: 4rem; }
-            h2 { font-size: 3rem; }
-            .grid-magazine {
-                grid-template-columns: 1fr; /* Pod sebou na menších obrazovkách */
-            }
-            .text-block, .image-block, .text-block.align-right, .image-block.align-left, .hero-content {
-                grid-column: 1 / -1; /* Vždy na plnou šířku */
-            }
-            .image-block { margin-top: 40px; }
-            .hero { text-align: center; }
-            .hero p { margin: 0 auto 30px auto; }
+            letter-spacing: 1px;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
         }
 
+        .nav-links a:hover {
+            color: var(--grease-yellow);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--grease-yellow);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 🔧 TLAČÍTKA S CHARAKTEREM 🔧 */
+        .btn {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid var(--grease-yellow);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn:hover {
+            color: var(--oil-black);
+            border-color: var(--mechanic-red);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--grease-yellow);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+
+        .btn:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* 📦 NETRADIČNÍ ODDÍLY 📦 */
+        .section {
+            padding: 8rem 10%;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--diesel-blue);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(to right, var(--mechanic-red), var(--grease-yellow));
+        }
+
+        /* 🚘 O NÁS - ŠIKMÝ DESIGN 🚘 */
+        .about-section {
+            background-color: white;
+            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+            margin-top: -5rem;
+            padding-bottom: 10rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            position: relative;
+        }
+
+        .about-text::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--grease-yellow);
+            z-index: -1;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--diesel-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .car-models {
+            margin-top: 2rem;
+        }
+
+        .car-models h4 {
+            color: var(--diesel-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .car-models ul {
+            columns: 2;
+            list-style-type: none;
+        }
+
+        .car-models li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .car-models li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--mechanic-red);
+        }
+
+        .about-image {
+            position: relative;
+            box-shadow: 20px 20px 0 var(--grease-yellow);
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover {
+            transform: rotate(-2deg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 5px solid white;
+        }
+
+        /* 🛢️ SLUŽBY - KARTOVÝ DESIGN 🛢️ */
+        .services-section {
+            background-color: var(--paper-white);
+            padding-bottom: 10rem;
+            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+            margin-top: -5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid var(--mechanic-red);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            color: var(--diesel-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .service-features {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed #ddd;
+        }
+
+        .service-features li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .service-features li::before {
+            content: '⚙️';
+            position: absolute;
+            left: 0;
+        }
+
+        /* 🔨 JAK PRACUJEME - TIMELINE 🔨 */
+        .process-section {
+            background-color: var(--diesel-blue);
+            color: white;
+            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+            margin-top: -5rem;
+            padding-bottom: 10rem;
+        }
+
+        .process-section .section-title {
+            color: white;
+        }
+
+        .process-section .section-title::after {
+            background: linear-gradient(to right, var(--grease-yellow), var(--mechanic-red));
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--grease-yellow);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 50%;
+            padding: 1.5rem;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+            padding-right: 3rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+            padding-left: 3rem;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--mechanic-red);
+            border: 3px solid var(--grease-yellow);
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -12px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -12px;
+        }
+
+        .timeline-content {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 5px;
+            border-left: 3px solid var(--grease-yellow);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            border-left: none;
+            border-right: 3px solid var(--grease-yellow);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--grease-yellow);
+        }
+
+        .timeline-content p {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ⚙️ PROČ MY - KOLÁŽ ⚙️ */
+        .why-section {
+            background-color: var(--paper-white);
+            padding-bottom: 8rem;
+        }
+
+        .collage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 200px);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .collage-item {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .collage-item:hover {
+            transform: scale(1.03);
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .collage-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .collage-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .collage-item:nth-child(1) {
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+        }
+
+        .collage-item:nth-child(2) {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+
+        .collage-item:nth-child(3) {
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+        }
+
+        .collage-item:nth-child(4) {
+            grid-column: 2 / 4;
+            grid-row: 2 / 3;
+        }
+
+        .collage-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .collage-item:hover .collage-caption {
+            transform: translateY(0);
+        }
+
+        .benefits-list {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-item {
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 3px solid var(--mechanic-red);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .benefit-item h3 {
+            color: var(--diesel-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .benefit-item h3::before {
+            content: '✓';
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background: var(--grease-yellow);
+            color: var(--oil-black);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            margin-right: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .benefit-item p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* 📞 KONTAKT - ASYMETRICKÝ DESIGN 📞 */
+        .contact-section {
+            background-color: var(--oil-black);
+            color: white;
+            clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+            padding-top: 10rem;
+            padding-bottom: 5rem;
+            margin-top: -5rem;
+        }
+
+        .contact-section .section-title {
+            color: white;
+        }
+
+        .contact-section .section-title::after {
+            background: linear-gradient(to right, var(--grease-yellow), var(--mechanic-red));
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            position: relative;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-left: 3px solid var(--grease-yellow);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--grease-yellow);
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-details p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .contact-details i {
+            margin-right: 1rem;
+            color: var(--grease-yellow);
+            font-size: 1.2rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--grease-yellow);
+            color: var(--oil-black);
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--grease-yellow);
+            z-index: -1;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--oil-black);
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--diesel-blue);
+            box-shadow: 0 0 0 2px rgba(26, 62, 114, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--mechanic-red);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--diesel-blue);
+        }
+
+        /* 🏁 FOOTER - MINIMALISTICKÝ 🏁 */
+        .footer {
+            background-color: var(--oil-black);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--grease-yellow);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links li {
+            margin: 0 1rem 0.5rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--grease-yellow);
+        }
+
+        .copyright {
+            color: var(--steel-gray);
+            font-size: 0.8rem;
+        }
+
+        /* 📱 RESPONZIVITA 📱 */
+        @media (max-width: 1024px) {
+            .diagonal-header, .about-section, .services-section, .process-section {
+                clip-path: none;
+                margin-top: 0;
+            }
+
+            .about-grid, .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+                padding-left: 70px;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 20px;
+            }
+
+            .collage-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: repeat(3, 200px);
+            }
+
+            .collage-item:nth-child(1) {
+                grid-column: 1 / 2;
+                grid-row: 1 / 2;
+            }
+
+            .collage-item:nth-child(2) {
+                grid-column: 2 / 3;
+                grid-row: 1 / 2;
+            }
+
+            .collage-item:nth-child(3) {
+                grid-column: 1 / 2;
+                grid-row: 2 / 3;
+            }
+
+            .collage-item:nth-child(4) {
+                grid-column: 2 / 3;
+                grid-row: 3 / 4;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+
+            .header-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .sticky-nav {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .collage-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 200px);
+            }
+
+            .collage-item:nth-child(1),
+            .collage-item:nth-child(2),
+            .collage-item:nth-child(3),
+            .collage-item:nth-child(4) {
+                grid-column: 1 / 2;
+                grid-row: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 2rem;
+            }
+
+            .car-models ul {
+                columns: 1;
+            }
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <header class="section hero">
-        <div class="container">
-            <div class="grid-magazine">
-                <div class="hero-content">
-                    <h1>Řemeslo, na které se dá <span>spolehnout.</span></h1>
-                    <p>Zapomeňte na kompromisy a krátkodobá řešení. Specializujeme se na hloubkové mechanické úpravy starších turbodieselů, které jim vrací život, charakter a funkční výkon.</p>
-                </div>
-            </div>
+    <!-- 🚗 NETRADIČNÍ HEADER 🚗 -->
+    <header class="diagonal-header">
+        <div class="header-content">
+            <h1 class="header-title">BendakAuto</h1>
+            <p class="header-subtitle">Specialisté na úpravy starých dieselů (1990-2000)</p>
+            <a href="#contact" class="btn">Domluvit konzultaci</a>
         </div>
     </header>
 
-    <main>
-        <section class="section">
-            <div class="container">
-                <h2>Náš Postup: Jasný a Ověřený</h2>
-                
-                <div class="grid-magazine">
-                    <div class="text-block">
-                        <h3>1. Chlazení jako základ</h3>
-                        <p>Vše začíná u teploty. Ochlazením stlačeného vzduchu pomocí na míru integrovaného intercooleru dodáme motoru hustší, na kyslík bohatší směs. To je naprostý základ pro efektivní, výkonné a bezpečné spalování, které snižuje tepelný stres klíčových komponentů motoru.</p>
+    <!-- 🛠️ NAVIGACE 🛠️ -->
+    <nav class="sticky-nav">
+        <div class="logo">BENDAK<span>AUTO</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">O NÁS</a></li>
+            <li><a href="#services">SLUŽBY</a></li>
+            <li><a href="#process">PROCES</a></li>
+            <li><a href="#why-us">PROČ MY?</a></li>
+            <li><a href="#contact">KONTAKT</a></li>
+        </ul>
+    </nav>
+
+    <!-- 🚘 O NÁS - ŠIKMÝ DESIGN 🚘 -->
+    <section id="about" class="about-section section">
+        <div class="container">
+            <h2 class="section-title">O NÁS</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Vítejte v naší dieselové dílně</h3>
+                    <p>Jsme tým nadšenců, kteří žijí pro staré dieselové motory. Naše specializace jsou vozy z let 1990-2000, kdy se ještě vyráběly poctivé stroje s mechanickými vstřikovači a odolnými motory.</p>
+                    <p>V BendakAuto nejsme jen obyčejný servis. Rozumíme těmto motorům na molekulární úrovni a víme, jak z nich dostat maximum, aniž bychom je přetěžovali. Naše úpravy jsou promyšlené a prověřené léty praxe.</p>
+                    <div class="car-models">
+                        <h4>Naše speciality:</h4>
+                        <ul>
+                            <li>VW Golf II, III TDI</li>
+                            <li>BMW E34 525tds</li>
+                            <li>Mercedes W124 300D</li>
+                            <li>Peugeot 405, 406 TD</li>
+                            <li>Opel Omega 2.5 TD</li>
+                            <li>Audi 80, 100 TDI</li>
+                            <li>Ford Scorpio 2.5 TD</li>
+                            <li>Renault Laguna 1.9 dTi</li>
+                        </ul>
                     </div>
-                    <div class="image-block">
-                        <!-- FOTO: Detailní záběr na motor nebo intercooler, může být barevný a ostrý -->
-                        <img src="https://images.unsplash.com/photo-1549488344-2453894b38d3?q=80&w=2070&auto=format&fit=crop" alt="Instalace intercooleru">
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Stará dieselová dílna">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🛢️ SLUŽBY - KARTOVÝ DESIGN 🛢️ -->
+    <section id="services" class="services-section section">
+        <div class="container">
+            <h2 class="section-title">NAŠE SLUŽBY</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Montáž intercooleru">
+                    </div>
+                    <div class="service-content">
+                        <h3>Montáž intercoolerů</h3>
+                        <p>Dodatečná montáž mezichladičů pro vozy, které je původně neměly. Používáme osvědčené originální díly z jiných modelů nebo kvalitní aftermarket řešení.</p>
+                        <div class="service-features">
+                            <ul>
+                                <li>Výrazné snížení teploty vstupního vzduchu</li>
+                                <li>Zvýšení výkonu o 15-25%</li>
+                                <li>Prodloužení životnosti motoru</li>
+                                <li>Snižuje kouřivost</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ladění vstřikovacího čerpadla">
+                    </div>
+                    <div class="service-content">
+                        <h3>Ladění čerpadel</h3>
+                        <p>Seřízení vstřikovacích čerpadel Bosch VE, Lucas a dalších systémů. Přesné nastavení dávkování a časování pro optimální výkon a hospodárnost.</p>
+                        <div class="service-features">
+                            <ul>
+                                <li>Precizní seřízení LDA (boost compensator)</li>
+                                <li>Optimalizace dávky paliva</li>
+                                <li>Úprava předstihu</li>
+                                <li>Zvýšení točivého momentu</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Úpravy turbodmychadel">
+                    </div>
+                    <div class="service-content">
+                        <h3>Úpravy turbodmychadel</h3>
+                        <p>Optimalizace původních turb pro lepší odezvu a vyšší spolehlivost. Výměna ložisek, úprava lopatek nebo kompletní renovace.</p>
+                        <div class="service-features">
+                            <ul>
+                                <li>Renovace stávajícího turba</li>
+                                <li>Výměna ložisek a těsnění</li>
+                                <li>Úprava wastegate</li>
+                                <li>Montáž většího turbodmychadla</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <section class="section" style="background: #1a1a1a;">
-            <div class="container">
-                 <div class="grid-magazine">
-                    <div class="image-block align-left">
-                        <!-- FOTO: Černobílá fotka detailu svárů nebo nástrojů -->
-                        <img src="https://images.unsplash.com/photo-1617024318023-8c7c9c9f0b0c?q=80&w=1974&auto=format&fit=crop" style="filter: grayscale(100%) contrast(1.2);" alt="Svařování potrubí">
+        </div>
+    </section>
+
+    <!-- 🔨 JAK PRACUJEME - TIMELINE 🔨 -->
+    <section id="process" class="process-section section">
+        <div class="container">
+            <h2 class="section-title">JAK PRACUJEME</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Diagnostika</h3>
+                        <p>Každý vůz nejprve pečlivě prohlédneme a otestujeme. Zkontrolujeme stav motoru, vstřikovacího systému, turbodmychadla a dalších klíčových komponent.</p>
                     </div>
-                    <div class="text-block align-right">
-                        <h3>2. Precizní seřízení</h3>
-                        <p>Když má motor správný vzduch, musí dostat i správné množství paliva. Seřizujeme mechanická vstřikovací čerpadla s chirurgickou precizností. Nejde nám o maximální hodnoty, ale o dokonalou rovnováhu mezi výkonem, spotřebou a spolehlivostí. Každý motor je unikátní a my k němu tak přistupujeme.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Konzultace</h3>
+                        <p>Společně probereme vaše očekávání a navrhneme optimální řešení. Vysvětlíme všechny možnosti a doporučíme nejvhodnější postup.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Realizace</h3>
+                        <p>Všechny úpravy provádíme s maximální pečlivostí. Používáme osvědčené díly a postupy. Neodbýváme detaily, protože právě na nich závisí spolehlivost.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Předání</h3>
+                        <p>Po dokončení prací vůz důkladně otestujeme v různých režimech. Vše vám podrobně vysvětlíme a poradíme s údržbou.</p>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <section class="section">
-            <div class="container">
-                <div class="grid-magazine">
-                     <div class="quote-block">
-                        <p>"Výsledkem není auto, které má jen víc koní. Je to auto, které lépe dýchá, má sílu v celém spektru otáček a dává vám pocit absolutní kontroly a spolehlivosti."</p>
+        </div>
+    </section>
+
+    <!-- ⚙️ PROČ MY - KOLÁŽ ⚙️ -->
+    <section id="why-us" class="why-section section">
+        <div class="container">
+            <h2 class="section-title">PROČ SI VYBRAT PRÁVĚ NÁS?</h2>
+            <div class="collage-grid">
+                <div class="collage-item">
+                    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Dílna">
+                    <div class="collage-caption">Naše dílna</div>
+                </div>
+                <div class="collage-item">
+                    <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Nástroje">
+                    <div class="collage-caption">Kvalitní vybavení</div>
+                </div>
+                <div class="collage-item">
+                    <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mechanik">
+                    <div class="collage-caption">Zkušení mechanici</div>
+                </div>
+                <div class="collage-item">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Díly">
+                    <div class="collage-caption">Kvalitní díly</div>
+                </div>
+            </div>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <h3>25 let zkušeností</h3>
+                    <p>S těmito motory pracujeme od doby, kdy byla nová. Známe každý jejich detail a víme, jak je vyladit.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Specializace na veterány</h3>
+                    <p>Nerobíme všechno. Specializujeme se výhradně na starší diesely a rozumíme jejich specifikům.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Kvalitní díly</h3>
+                    <p>Používáme originální nebo prověřené náhradní díly. Neexperimentujeme s neznámými komponenty.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Poctivý přístup</h3>
+                    <p>Neslibujeme nemožné. Řekneme vám na rovinu, co se dá z vašeho motoru reálně vytěžit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📞 KONTAKT - ASYMETRICKÝ DESIGN 📞 -->
+    <section id="contact" class="contact-section section">
+        <div class="container">
+            <h2 class="section-title">KONTAKT</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Kde nás najdete</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> Dieselová 123, 602 00 Brno</p>
+                        <p><i class="fas fa-phone"></i> +420 123 456 789</p>
+                        <p><i class="fas fa-envelope"></i> info@bendakauto.cz</p>
+                        <p><i class="fas fa-clock"></i> Po-Pá: 8:00 - 17:00</p>
+                        <p><i class="fas fa-car"></i> Parkování přímo před dílnou</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-            </div>
-        </section>
-        
-        <section class="section contact-section">
-            <div class="container contact-box">
-                <h2>Proberme váš projekt.</h2>
-                <p>Jste připraveni dát vašemu vozu to nejlepší? Ozvěte se.</p>
-                <a href="tel:[VAŠE TELEFONNÍ ČÍSLO]" class="contact-info">[VAŠE TELEFONNÍ ČÍSLO]</a>
-                
-                <div class="disclaimer">
-                    Upozorňujeme, že úpravy jsou individuální technickou změnou vozidla. Nejsou zapsány v TP a nemusí být schváleny pro provoz na poz. komunikacích, což může ovlivnit výsledek STK. O všech aspektech budete předem plně informováni.
-                    <p style="margin-top:10px;">© 2025 [Váš Název Firmy]</p>
+                <div class="contact-form">
+                    <h3>Napište nám</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Vaše jméno</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Váš email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Váš telefon</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="car">Vůz (model, rok, motorizace)</label>
+                            <input type="text" id="car" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">O jaké úpravy máte zájem?</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">ODESLAT DOTAZ</button>
+                    </form>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- 🏁 FOOTER 🏁 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">BENDAK<span>AUTO</span></div>
+            <ul class="footer-links">
+                <li><a href="#about">O NÁS</a></li>
+                <li><a href="#services">SLUŽBY</a></li>
+                <li><a href="#process">JAK PRACUJEME</a></li>
+                <li><a href="#why-us">PROČ MY?</a></li>
+                <li><a href="#contact">KONTAKT</a></li>
+            </ul>
+            <div class="copyright">
+                &copy; 2023 BendakAuto | Specializace na dieselové veterány 1990-2000
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

@@ -3,298 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turbodiesel Tuning – Peugeot J5</title>
-    <meta name="description" content="Revoluční tuning starších turbodieselů, jako je Peugeot J5, s dodatečnou montáží intercoolerů a optimalizací motoru.">
+    <title>[NÁZEV DÍLNY] | Technický plán úprav</title>
+    <meta name="description" content="Netradiční, ale dokonale přehledný pohled na mechanické úpravy starých turbodieselů. Prozkoumejte náš technický plán.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        * {
+        /* --- DESIGN "Technický výkres" --- */
+        :root {
+            --color-blueprint-bg: #0a2344;
+            --color-line-work: #a7c5e6;
+            --color-text: #ffffff;
+            --font-main: 'Roboto Condensed', sans-serif;
+            --font-blueprint: 'Special Elite', cursive;
+        }
+
+        /* Zabrání vertikálnímu posunu */
+        body, html {
             margin: 0;
             padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Skryje všechny posuvníky */
+            font-family: var(--font-main);
+            background: #111;
+        }
+
+        .blueprint-container {
+            width: 100%;
+            height: 100%;
+            overflow-x: auto; /* Povolí pouze horizontální posun */
+            overflow-y: hidden;
+            background-color: var(--color-blueprint-bg);
+            /* Mřížka jako pozadí pro blueprint efekt */
+            background-image:
+                linear-gradient(rgba(167, 197, 230, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(167, 197, 230, 0.1) 1px, transparent 1px);
+            background-size: 25px 25px;
+        }
+        
+        /* Tento wrapper bude mnohem širší než obrazovka */
+        .blueprint-wrapper {
+            width: 400vw; /* Šířka 4 obrazovek */
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .blueprint-section {
+            width: 100vw; /* Každá sekce zabírá šířku jedné obrazovky */
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5vw;
             box-sizing: border-box;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        body {
-            background: radial-gradient(circle, #1a1a1a, #0a0a0a);
-            color: #fff;
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-
-        .container {
+            border-right: 2px dashed rgba(167, 197, 230, 0.3);
             position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
         }
 
-        .turbo-nav {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            z-index: 10;
-        }
-
-        .center-image {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            background: url('https://images.unsplash.com/photo-1619363288216-7b7c8b80260d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            border-radius: 50%;
-            border: 5px solid #ff9900;
-            box-shadow: 0 0 20px rgba(255, 153, 0, 0.5);
-            transition: transform 0.3s ease;
-        }
-
-        .nav-item {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            background: rgba(255, 153, 0, 0.8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .title-block {
+            border: 2px solid var(--color-line-work);
+            padding: 30px 40px;
+            color: var(--color-text);
             text-align: center;
+        }
+        .title-block h1 {
+            font-family: var(--font-blueprint);
+            font-size: 3rem;
+            margin: 0;
+            color: #fff;
+            border-bottom: 2px solid var(--color-line-work);
+            padding-bottom: 10px;
+        }
+        .title-block p {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+        .scroll-prompt {
+            position: absolute;
+            bottom: 40px;
+            font-size: 1.2rem;
+            color: var(--color-line-work);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateX(0);}
+            40% {transform: translateX(10px);}
+            60% {transform: translateX(5px);}
+        }
+        
+        .engine-drawing img {
+            max-height: 80vh;
+            filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(167, 197, 230, 0.5));
+        }
+
+        .info-node {
+            position: absolute;
+            background: #fff;
+            color: #000;
+            padding: 15px 20px;
+            border: 1px solid #000;
+            max-width: 250px;
             font-size: 0.9rem;
-            font-weight: 600;
+            box-shadow: 3px 3px 5px rgba(0,0,0,0.4);
+        }
+        .info-node h3 {
+            font-family: var(--font-blueprint);
+            font-size: 1.2rem;
+            margin: 0 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #888;
+        }
+        
+        /* Pozice jednotlivých popisků */
+        .node-1 { top: 15%; left: 5%; }
+        .node-2 { bottom: 20%; left: 18%; }
+        .node-3 { top: 20%; right: 10%; }
+
+        .gallery-box {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .gallery-image {
+            border: 10px solid #fff;
+            background: #fff;
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+            transform: rotate(-3deg);
+        }
+        .gallery-image img {
+            width: 350px;
+            display: block;
+            filter: grayscale(100%) contrast(1.2);
+        }
+        .gallery-text h2 {
+            font-family: var(--font-blueprint);
             color: #fff;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: transform 0.5s ease, background 0.3s ease;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            font-size: 3rem;
         }
 
-        .nav-item:hover {
-            background: #ff9900;
-            transform: scale(1.1);
+        .final-block {
+            border-left: 5px solid var(--color-text);
+            padding: 30px 40px;
         }
-
-        .content-section {
-            position: relative;
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .content-section.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .content-section h2 {
-            font-size: 2.5rem;
-            color: #ff9900;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .content-section h3 {
-            font-size: 1.8rem;
+        .final-block p {
+            font-size: 1.5rem;
             color: #fff;
-            margin-bottom: 1rem;
         }
-
-        .content-section p, .content-section ul {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .content-section ul {
-            list-style: none;
-            padding-left: 0;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .content-section ul li {
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .content-section ul li:before {
-            content: "⚙";
-            color: #ff9900;
-            position: absolute;
-            left: 0;
-        }
-
-        .contact {
-            background: #1a1a1a;
-            padding: 3rem;
-            text-align: center;
-            border-radius: 20px;
-            margin: 4rem auto;
-            max-width: 800px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .contact a {
-            color: #ff9900;
+        .final-block .contact-info {
+            font-family: var(--font-blueprint);
+            font-size: 2rem;
+            color: var(--color-line-work);
             text-decoration: none;
-            font-weight: 500;
+            display: block;
+            margin-top: 20px;
         }
-
-        .contact a:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            background: #0a0a0a;
-            color: #fff;
-            text-align: center;
-            padding: 1.5rem;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .turbo-nav {
-                width: 400px;
-                height: 400px;
-            }
-
-            .center-image {
-                width: 200px;
-                height: 200px;
-            }
-
-            .nav-item {
-                width: 80px;
-                height: 80px;
-                font-size: 0.7rem;
-            }
-
-            .content-section h2 {
-                font-size: 2rem;
-            }
-
-            .content-section h3 {
-                font-size: 1.4rem;
-            }
-
-            .content-section p, .content-section ul {
-                font-size: 1rem;
-            }
-
-            .contact {
-                padding: 2rem;
-            }
-        }
+        .final-block .contact-info:hover { color: #fff; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="turbo-nav">
-            <div class="center-image"></div>
-            <div class="nav-item" data-section="o-nas" style="transform: rotate(0deg) translateX(200px) rotate(0deg);">O nás</div>
-            <div class="nav-item" data-section="sluzby" style="transform: rotate(72deg) translateX(200px) rotate(-72deg);">Služby</div>
-            <div class="nav-item" data-section="pristup" style="transform: rotate(144deg) translateX(200px) rotate(-144deg);">Přístup</div>
-            <div class="nav-item" data-section="proc-my" style="transform: rotate(216deg) translateX(200px) rotate(-216deg);">Proč my</div>
-            <div class="nav-item" data-section="kontakt" style="transform: rotate(288deg) translateX(200px) rotate(-288deg);">Kontakt</div>
-        </div>
-        <div class="content-section" id="o-nas">
-            <h2>O nás</h2>
-            <p>Vítejte u Turbodiesel Tuning! Jsme tým nadšenců, kteří oživují starší turbodiesely, jako je Peugeot J5. S 20 lety zkušeností přinášíme vašemu vozu výkon, spolehlivost a dynamiku. Naše specializovaná dílna kombinuje vášeň pro mechaniku s precizním přístupem, který běžné servisy nenabízejí.</p>
-        </div>
-        <div class="content-section" id="sluzby">
-            <h2>Naše služby</h2>
-            <h3>Dodatečná montáž intercoolerů</h3>
-            <p>Transformujeme váš Peugeot J5 profesionální montáží intercoolerů pro vyšší výkon a efektivitu.</p>
-            <ul>
-                <li>Zvýšení výkonu díky chladnějšímu vzduchu.</li>
-                <li>Nižší spotřeba paliva na dlouhých trasách.</li>
-                <li>Delší životnost motoru díky nižším teplotám spalování.</li>
-                <li>Menší kouřivost výfuku.</li>
-            </ul>
-        </div>
-        <div class="content-section" id="pristup">
-            <h2>Náš přístup</h2>
-            <ul>
-                <li>Detailní diagnostika a konzultace na míru.</li>
-                <li>Custom potrubí z hliníku a silikonu pro maximální efektivitu.</li>
-                <li>Precizní instalace intercooleru bez kompromisů.</li>
-                <li>Ladění turba a čerpadla s důrazem na bezpečnost (EGT).</li>
-            </ul>
-            <p>Nabízíme instalaci budíků pro tlak turba a teplotu EGT pro plnou kontrolu.</p>
-        </div>
-        <div class="content-section" id="proc-my">
-            <h2>Proč si vybrat nás?</h2>
-            <ul>
-                <li>20 let zkušeností s turbodiesely.</li>
-                <li>Specializace na Peugeot J5 a podobné vozy.</li>
-                <li>Kvalitní materiály a individuální přístup.</li>
-                <li>Plná transparentnost a informovanost.</li>
-            </ul>
-            <p><strong>Upozornění:</strong> Úpravy nemusí být schváleny pro provoz v ČR a mohou ovlivnit STK. Vše s vámi předem prodiskutujeme.</p>
-        </div>
-        <div class="content-section contact" id="kontakt">
-            <h2>Kontakt</h2>
-            <p>Oživte svůj Peugeot J5! Kontaktujte nás:</p>
-            <p><strong>Telefon:</strong> +420 123 456 789</p>
-            <p><strong>E-mail:</strong> <a href="mailto:info@turbodieseltuning.cz">info@turbodieseltuning.cz</a></p>
-            <p><strong>Adresa:</strong> Turbodiesel Tuning, Průmyslová 123, 123 00 Praha</p>
-            <p><strong>Sociální sítě:</strong> <a href="https://facebook.com/turbodieseltuning">Facebook</a> | <a href="https://instagram.com/turbodieseltuning">Instagram</a></p>
-        </div>
+
+<div class="blueprint-container">
+    <div class="blueprint-wrapper">
+
+        <!-- SEKCE 1: ÚVOD -->
+        <section class="blueprint-section">
+            <div class="title-block">
+                <h1>[NÁZEV VAŠÍ DÍLNY]</h1>
+                <p>Projekt: Mechanická optimalizace starších Turbodieselů</p>
+            </div>
+            <div class="scroll-prompt">POSUNOUT PRO PLÁN ➔</div>
+        </section>
+
+        <!-- SEKCE 2: TECHNICKÝ PLÁN -->
+        <section class="blueprint-section">
+            <div class="engine-drawing">
+                <!-- Obrázek motoru nebo jeho schéma. Musí být průhledný PNG. -->
+                <img src="https://www.pngmart.com/files/16/Car-Engine-Transparent-PNG.png" alt="Schéma motoru">
+            </div>
+            
+            <!-- Popisky k motoru -->
+            <div class="info-node node-1">
+                <h3>Spec. #1: INTERCOOLER</h3>
+                Ochlazení stlačeného vzduchu pro hustší náplň válců a vyšší účinnost spalování.
+            </div>
+            <div class="info-node node-2">
+                <h3>Spec. #2: ČERPADLO</h3>
+                Pečlivé mechanické seřízení dávky paliva pro optimální směs. Žádná elektronika.
+            </div>
+            <div class="info-node node-3">
+                <h3>Spec. #3: VEDENÍ</h3>
+                Zakázková výroba potrubí pro maximální průtok a minimální tlakové ztráty.
+            </div>
+        </section>
+        
+        <!-- SEKCE 3: DŮKAZY -->
+        <section class="blueprint-section">
+            <div class="gallery-box">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1617024318023-8c7c9c9f0b0c?q=80&w=1974&auto=format&fit=crop" alt="Ukázka sváru na potrubí">
+                </div>
+                <div class="gallery-text">
+                    <h2>DŮKAZ<br>MÍSTO<br>SLIBŮ.</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKCE 4: KONTAKT -->
+        <section class="blueprint-section">
+             <div class="final-block">
+                <p>Plán je jasný. Pokud se vám líbí náš přístup, ozvěte se a probereme projekt pro Váš vůz.</p>
+                <a href="tel:[VAŠE TELEFONNÍ ČÍSLO]" class="contact-info">[VAŠE TELEFONNÍ ČÍSLO]</a>
+                <a href="mailto:[VÁŠ EMAIL]" class="contact-info">[VÁŠ EMAIL]</a>
+                <p style="font-size:1rem; color:#aaa; margin-top:50px;">Upozornění: Úpravy nemusí být schváleny pro provoz na poz. komunikacích.</p>
+             </div>
+        </section>
+
     </div>
-    <footer>
-        <p>© 2025 Turbodiesel Tuning. Všechna práva vyhrazena.</p>
-    </footer>
-    <script>
-        // Animate nav items on load
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach((item, index) => {
-            setTimeout(() => {
-                item.style.transform = `rotate(${index * 72}deg) translateX(200px) rotate(-${index * 72}deg)`;
-            }, index * 200);
-        });
+</div>
 
-        // Scroll to section and activate
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const sectionId = item.dataset.section;
-                const section = document.getElementById(sectionId);
-                section.scrollIntoView({ behavior: 'smooth' });
-                document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-                section.classList.add('active');
-            });
-        });
-
-        // Reveal sections on scroll
-        const sections = document.querySelectorAll('.content-section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.3 });
-
-        sections.forEach(section => observer.observe(section));
-
-        // Rotate center image on scroll
-        window.addEventListener('scroll', () => {
-            const centerImage = document.querySelector('.center-image');
-            const scrollPosition = window.scrollY;
-            centerImage.style.transform = `translate(-50%, -50%) rotate(${scrollPosition * 0.1}deg)`;
-        });
-    </script>
 </body>
 </html>

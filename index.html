@@ -3,222 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[VÁŠ NÁZEV DÍLNY] | Poctivé úpravy pro staré turbodiesely</title>
-    <meta name="description" content="Specializovaná dílna pro turbodiesely z 80. a 90. let. Jasně, přehledně a bez zbytečností.">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
-
+    <title>Turbodiesel Tuning – Peugeot J5</title>
+    <meta name="description" content="Revoluční tuning starších turbodieselů, jako je Peugeot J5, s dodatečnou montáží intercoolerů a optimalizací motoru.">
     <style>
-        :root {
-            --color-bg: #222222;
-            --color-paper: #fdfaf0; /* Lehce zažloutlý papír */
-            --color-ink: #2b2b2b; /* Tmavý inkoust */
-            --color-heading: #1a1a1a;
-            --color-accent: #c65102; /* Oranžová jako stará rez nebo barva nářadí */
-            --font-headings: 'Oswald', sans-serif;
-            --font-body: 'Roboto Slab', serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
         }
 
         body {
-            margin: 0;
-            background-color: var(--color-bg);
-            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAQUlEQVR42u3OMQEAAAgDoC2G/Yt7Cys4K3gABgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGRgYDh0IADqud304AAAAASUVORK5CYII=');
-            font-family: var(--font-body);
-            color: var(--color-ink);
-            font-size: 17px; /* Větší základní písmo */
-            line-height: 1.8;
-        }
-        
-        .page-wrapper {
-            max-width: 960px;
-            margin: 40px auto;
-            background: var(--color-paper);
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
-        
-        .content-box {
-            padding: 40px 50px;
+            background: radial-gradient(circle, #1a1a1a, #0a0a0a);
+            color: #fff;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
-        /* --- Záhlaví --- */
-        .main-header {
-            background: #fff;
-            padding: 20px 50px;
-            border-bottom: 5px solid #000;
+        .container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .turbo-nav {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            z-index: 10;
+        }
+
+        .center-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: url('https://images.unsplash.com/photo-1619363288216-7b7c8b80260d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            border-radius: 50%;
+            border: 5px solid #ff9900;
+            box-shadow: 0 0 20px rgba(255, 153, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 153, 0, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-        }
-        .main-header h1 {
-            font-family: var(--font-headings);
-            font-size: 3.5rem;
-            color: var(--color-heading);
-            margin: 0;
-            line-height: 1;
-        }
-        .main-header h1 span { color: var(--color-accent); }
-        .main-header p {
-            margin: 10px 0 0 0;
-            font-size: 1.1rem;
-            font-style: italic;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.5s ease, background 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
 
-        /* --- Tlačítka & Odkazy --- */
-        a {
-            color: var(--color-accent);
-            font-weight: bold;
+        .nav-item:hover {
+            background: #ff9900;
+            transform: scale(1.1);
+        }
+
+        .content-section {
+            position: relative;
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .content-section.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            color: #ff9900;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .content-section h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .content-section p, .content-section ul {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section ul {
+            list-style: none;
+            padding-left: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section ul li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .content-section ul li:before {
+            content: "⚙";
+            color: #ff9900;
+            position: absolute;
+            left: 0;
+        }
+
+        .contact {
+            background: #1a1a1a;
+            padding: 3rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 4rem auto;
+            max-width: 800px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact a {
+            color: #ff9900;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact a:hover {
             text-decoration: underline;
         }
-        a:hover {
-            color: #000;
-        }
 
-        /* --- Obrázky --- */
-        .image-container {
-            border: 1px solid #ddd;
-            padding: 8px;
-            background: #fff;
-            margin: 30px 0;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-        }
-        .image-container img {
-            width: 100%;
-            display: block;
-            filter: grayscale(100%) contrast(110%);
-        }
-
-        /* --- Obsah a sekce --- */
-        h2 {
-            font-family: var(--font-headings);
-            font-size: 2.2rem;
-            text-transform: uppercase;
-            color: var(--color-heading);
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 10px;
-            margin: 60px 0 25px 0;
-        }
-        
-        ul { padding-left: 25px; }
-        ul li { margin-bottom: 10px; }
-
-        .highlight-box {
-            background-color: #fffbef;
-            border: 2px solid var(--color-accent);
-            padding: 20px 30px;
-            margin-top: 30px;
-        }
-        .highlight-box h3 {
-            margin-top: 0;
-            color: var(--color-accent);
-            font-family: var(--font-headings);
-            font-size: 1.5rem;
-        }
-        .highlight-box p { font-weight: bold; font-size: 1.2rem;}
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        /* --- Kontaktní patička --- */
-        .footer {
-            background-color: var(--color-ink);
+        footer {
+            background: #0a0a0a;
             color: #fff;
             text-align: center;
-        }
-        .disclaimer {
+            padding: 1.5rem;
             font-size: 0.9rem;
-            color: #aaa;
-            line-height: 1.5;
-            padding: 20px 30px;
-            border-bottom: 1px solid #555;
-        }
-        .copyright {
-            padding: 20px;
-            font-size: 0.9rem;
-            color: #888;
         }
 
-        /* --- Responzivita pro snadné čtení --- */
-        @media (max-width: 640px) {
-            .page-wrapper { margin: 0; box-shadow: none;}
-            .content-box { padding: 30px 25px; }
-            .main-header { padding: 20px 25px; }
-            .main-header h1 { font-size: 2.5rem; }
-            .gallery-grid { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
+            .turbo-nav {
+                width: 400px;
+                height: 400px;
+            }
+
+            .center-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .nav-item {
+                width: 80px;
+                height: 80px;
+                font-size: 0.7rem;
+            }
+
+            .content-section h2 {
+                font-size: 2rem;
+            }
+
+            .content-section h3 {
+                font-size: 1.4rem;
+            }
+
+            .content-section p, .content-section ul {
+                font-size: 1rem;
+            }
+
+            .contact {
+                padding: 2rem;
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<div class="page-wrapper">
-
-    <header class="main-header">
-        <h1>[NÁZEV DÍLNY]<span>.</span></h1>
-        <p>Poctivé mechanické úpravy pro staré turbodiesely</p>
-    </header>
-    
-    <div class="content-box">
-        
-        <p style="font-size: 1.2rem; font-weight: bold;">Máte vůz s poctivým motorem z 80. nebo 90. let a cítíte, že si zaslouží víc? Jste na správném místě. Děláme úpravy, které mají smysl, jsou funkční a vydrží. Bez zbytečné elektroniky, jen čistá a srozumitelná mechanika.</p>
-        
-        <div class="image-container">
-            <!-- FOTKA: Stará poctivá dodávka nebo offroad -->
-            <img src="https://images.unsplash.com/photo-1593457116712-349a2122bf57?q=80&w=2070&auto=format&fit=crop" alt="Spolehlivý starý turbodieselový vůz">
+    <div class="container">
+        <div class="turbo-nav">
+            <div class="center-image"></div>
+            <div class="nav-item" data-section="o-nas" style="transform: rotate(0deg) translateX(200px) rotate(0deg);">O nás</div>
+            <div class="nav-item" data-section="sluzby" style="transform: rotate(72deg) translateX(200px) rotate(-72deg);">Služby</div>
+            <div class="nav-item" data-section="pristup" style="transform: rotate(144deg) translateX(200px) rotate(-144deg);">Přístup</div>
+            <div class="nav-item" data-section="proc-my" style="transform: rotate(216deg) translateX(200px) rotate(-216deg);">Proč my</div>
+            <div class="nav-item" data-section="kontakt" style="transform: rotate(288deg) translateX(200px) rotate(-288deg);">Kontakt</div>
         </div>
-        
-        <h2>CO DĚLÁME A PROČ TO FUNGUJE</h2>
-        <p>Náš přístup je jednoduchý a ověřený lety praxe. Zaměřujeme se na dva klíčové body, které společně probudí potenciál vašeho motoru.</p>
-        
-        <h3>1. Montáž INTERCOOLERU (mezichladiče)</h3>
-        <p>Základ všeho. I do vozů, které ho z výroby neměly, odborně nainstalujeme mezichladič. Co tím získáte?</p>
-        <ul>
-            <li><strong>Více výkonu:</strong> Chladnější vzduch je hustší, obsahuje více kyslíku. To umožňuje motoru lépe spalovat naftu a generovat více síly.</li>
-            <li><strong>Vyšší životnost:</strong> Snížením teploty vzduchu klesá i tepelné namáhání pístů, ventilů a hlavy válců. Šetříte tak celý motor.</li>
-            <li><strong>Nižší kouřivost:</strong> Efektivnější spalování znamená méně nespálených částic ve výfuku.</li>
-        </ul>
-
-        <h3>2. Pečlivé seřízení MOTORU</h3>
-        <p>Intercooler sám o sobě nestačí. Aby vše fungovalo na 100 %, je třeba motoru říct, co má dělat. Proto ručně a pečlivě seřídíme:</p>
-        <ul>
-            <li><strong>Vstřikovací čerpadlo:</strong> Nastavíme optimální dávku paliva tak, aby odpovídala většímu množství vzduchu.</li>
-            <li><strong>Turbodmychadlo:</strong> Upravíme jeho regulaci pro správný plnící tlak v celém rozsahu otáček.</li>
-        </ul>
-
-        <h2>PODÍVEJTE SE NÁM POD RUCE</h2>
-        <p>Nejlepší vizitkou je odvedená práce. Tady je několik ukázek z naší dílny.</p>
-
-        <div class="gallery-grid">
-            <div class="image-container">
-                 <!-- FOTKA: Detail sváru na potrubí -->
-                 <img src="https://images.unsplash.com/photo-1617024318023-8c7c9c9f0b0c?q=80&w=1974&auto=format&fit=crop" alt="Svařování potrubí na míru">
-            </div>
-             <div class="image-container">
-                 <!-- FOTKA: Motor po úpravě, čistá práce -->
-                 <img src="https://images.unsplash.com/photo-1549488344-2453894b38d3?q=80&w=2070&auto=format&fit=crop" alt="Motor po instalaci">
-            </div>
+        <div class="content-section" id="o-nas">
+            <h2>O nás</h2>
+            <p>Vítejte u Turbodiesel Tuning! Jsme tým nadšenců, kteří oživují starší turbodiesely, jako je Peugeot J5. S 20 lety zkušeností přinášíme vašemu vozu výkon, spolehlivost a dynamiku. Naše specializovaná dílna kombinuje vášeň pro mechaniku s precizním přístupem, který běžné servisy nenabízejí.</p>
         </div>
-
-        <div class="highlight-box">
-            <h3>MÁTE OTÁZKY NEBO ZÁJEM O KONZULTACI?</h3>
-            <p>Nejlepší je se ozvat. Zavolejte nebo napište a probereme možnosti přímo pro Váš vůz.</p>
-            <p style="font-size: 1.8rem; margin-top:10px;">Tel: <a href="tel:[VAŠE TELEFONNÍ ČÍSLO]">[VAŠE TELEFONNÍ ČÍSLO]</a></p>
-            <p style="font-size: 1.2rem;">Email: <a href="mailto:[VÁŠ EMAIL]">[VÁŠ EMAIL]</a></p>
+        <div class="content-section" id="sluzby">
+            <h2>Naše služby</h2>
+            <h3>Dodatečná montáž intercoolerů</h3>
+            <p>Transformujeme váš Peugeot J5 profesionální montáží intercoolerů pro vyšší výkon a efektivitu.</p>
+            <ul>
+                <li>Zvýšení výkonu díky chladnějšímu vzduchu.</li>
+                <li>Nižší spotřeba paliva na dlouhých trasách.</li>
+                <li>Delší životnost motoru díky nižším teplotám spalování.</li>
+                <li>Menší kouřivost výfuku.</li>
+            </ul>
         </div>
-
+        <div class="content-section" id="pristup">
+            <h2>Náš přístup</h2>
+            <ul>
+                <li>Detailní diagnostika a konzultace na míru.</li>
+                <li>Custom potrubí z hliníku a silikonu pro maximální efektivitu.</li>
+                <li>Precizní instalace intercooleru bez kompromisů.</li>
+                <li>Ladění turba a čerpadla s důrazem na bezpečnost (EGT).</li>
+            </ul>
+            <p>Nabízíme instalaci budíků pro tlak turba a teplotu EGT pro plnou kontrolu.</p>
+        </div>
+        <div class="content-section" id="proc-my">
+            <h2>Proč si vybrat nás?</h2>
+            <ul>
+                <li>20 let zkušeností s turbodiesely.</li>
+                <li>Specializace na Peugeot J5 a podobné vozy.</li>
+                <li>Kvalitní materiály a individuální přístup.</li>
+                <li>Plná transparentnost a informovanost.</li>
+            </ul>
+            <p><strong>Upozornění:</strong> Úpravy nemusí být schváleny pro provoz v ČR a mohou ovlivnit STK. Vše s vámi předem prodiskutujeme.</p>
+        </div>
+        <div class="content-section contact" id="kontakt">
+            <h2>Kontakt</h2>
+            <p>Oživte svůj Peugeot J5! Kontaktujte nás:</p>
+            <p><strong>Telefon:</strong> +420 123 456 789</p>
+            <p><strong>E-mail:</strong> <a href="mailto:info@turbodieseltuning.cz">info@turbodieseltuning.cz</a></p>
+            <p><strong>Adresa:</strong> Turbodiesel Tuning, Průmyslová 123, 123 00 Praha</p>
+            <p><strong>Sociální sítě:</strong> <a href="https://facebook.com/turbodieseltuning">Facebook</a> | <a href="https://instagram.com/turbodieseltuning">Instagram</a></p>
+        </div>
     </div>
-
-    <footer class="footer">
-        <div class="disclaimer">
-            <strong>DŮLEŽITÉ UPOZORNĚNÍ (LEGISLATIVA):</strong> Tyto úpravy jsou individuální technickou změnou vozidla. Nejsou zapsány v technickém průkazu a nemusí být schváleny pro provoz na pozemních komunikacích, což může ovlivnit výsledek STK. O všech aspektech budete předem plně informováni.
-        </div>
-        <div class="copyright">
-            © 2025 [VÁŠ NÁZEV DÍLNY]
-        </div>
+    <footer>
+        <p>© 2025 Turbodiesel Tuning. Všechna práva vyhrazena.</p>
     </footer>
+    <script>
+        // Animate nav items on load
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.transform = `rotate(${index * 72}deg) translateX(200px) rotate(-${index * 72}deg)`;
+            }, index * 200);
+        });
 
-</div>
+        // Scroll to section and activate
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const sectionId = item.dataset.section;
+                const section = document.getElementById(sectionId);
+                section.scrollIntoView({ behavior: 'smooth' });
+                document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+                section.classList.add('active');
+            });
+        });
 
+        // Reveal sections on scroll
+        const sections = document.querySelectorAll('.content-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Rotate center image on scroll
+        window.addEventListener('scroll', () => {
+            const centerImage = document.querySelector('.center-image');
+            const scrollPosition = window.scrollY;
+            centerImage.style.transform = `translate(-50%, -50%) rotate(${scrollPosition * 0.1}deg)`;
+        });
+    </script>
 </body>
 </html>

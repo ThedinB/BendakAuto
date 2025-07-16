@@ -3,228 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[NÁZEV DÍLNY] | Technický plán úprav</title>
-    <meta name="description" content="Netradiční, ale dokonale přehledný pohled na mechanické úpravy starých turbodieselů. Prozkoumejte náš technický plán.">
+    <title>[Váš Název Firmy] | Mechanická Dokonalost</title>
+    <meta name="description" content="Precizní mechanické úpravy starších turbodieselů pro náročné. Kombinujeme starou školu s moderní precizností.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- DESIGN "Technický výkres" --- */
         :root {
-            --color-blueprint-bg: #0a2344;
-            --color-line-work: #a7c5e6;
-            --color-text: #ffffff;
-            --font-main: 'Roboto Condensed', sans-serif;
-            --font-blueprint: 'Special Elite', cursive;
+            --color-bg: #121212;
+            --color-text: #e0e0e0;
+            --color-text-secondary: #aaaaaa;
+            --color-accent: #D4AF37; /* Zlatý akcent */
+            --font-body: 'Montserrat', sans-serif;
+            --font-display: 'Playfair Display', serif;
         }
-
-        /* Zabrání vertikálnímu posunu */
-        body, html {
+        
+        body {
             margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden; /* Skryje všechny posuvníky */
-            font-family: var(--font-main);
-            background: #111;
-        }
-
-        .blueprint-container {
-            width: 100%;
-            height: 100%;
-            overflow-x: auto; /* Povolí pouze horizontální posun */
-            overflow-y: hidden;
-            background-color: var(--color-blueprint-bg);
-            /* Mřížka jako pozadí pro blueprint efekt */
-            background-image:
-                linear-gradient(rgba(167, 197, 230, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(167, 197, 230, 0.1) 1px, transparent 1px);
-            background-size: 25px 25px;
-        }
-        
-        /* Tento wrapper bude mnohem širší než obrazovka */
-        .blueprint-wrapper {
-            width: 400vw; /* Šířka 4 obrazovek */
-            height: 100%;
-            display: flex;
-            align-items: center;
-        }
-        
-        .blueprint-section {
-            width: 100vw; /* Každá sekce zabírá šířku jedné obrazovky */
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5vw;
-            box-sizing: border-box;
-            border-right: 2px dashed rgba(167, 197, 230, 0.3);
-            position: relative;
-        }
-
-        .title-block {
-            border: 2px solid var(--color-line-work);
-            padding: 30px 40px;
+            font-family: var(--font-body);
+            background: var(--color-bg);
             color: var(--color-text);
-            text-align: center;
-        }
-        .title-block h1 {
-            font-family: var(--font-blueprint);
-            font-size: 3rem;
-            margin: 0;
-            color: #fff;
-            border-bottom: 2px solid var(--color-line-work);
-            padding-bottom: 10px;
-        }
-        .title-block p {
-            font-size: 1.2rem;
-            margin-top: 20px;
-            text-transform: uppercase;
-        }
-        .scroll-prompt {
-            position: absolute;
-            bottom: 40px;
-            font-size: 1.2rem;
-            color: var(--color-line-work);
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateX(0);}
-            40% {transform: translateX(10px);}
-            60% {transform: translateX(5px);}
         }
         
-        .engine-drawing img {
-            max-height: 80vh;
-            filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(167, 197, 230, 0.5));
+        /* Základní kontejner a mřížka */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
         }
 
-        .info-node {
-            position: absolute;
-            background: #fff;
-            color: #000;
-            padding: 15px 20px;
-            border: 1px solid #000;
-            max-width: 250px;
-            font-size: 0.9rem;
-            box-shadow: 3px 3px 5px rgba(0,0,0,0.4);
+        /* Sekce a Asymetrický layout */
+        .section {
+            padding: 120px 0;
         }
-        .info-node h3 {
-            font-family: var(--font-blueprint);
-            font-size: 1.2rem;
-            margin: 0 0 10px 0;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #888;
-        }
-        
-        /* Pozice jednotlivých popisků */
-        .node-1 { top: 15%; left: 5%; }
-        .node-2 { bottom: 20%; left: 18%; }
-        .node-3 { top: 20%; right: 10%; }
 
-        .gallery-box {
-            display: flex;
+        .grid-magazine {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
             gap: 30px;
             align-items: center;
         }
-        .gallery-image {
-            border: 10px solid #fff;
-            background: #fff;
-            box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-            transform: rotate(-3deg);
+
+        /* Úvodní "Hero" sekce */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+             /* FOTO: Krásná fotka vašeho nejlepšího projektu */
+            background-image: linear-gradient(to right, rgba(18, 18, 18, 0.9) 0%, rgba(18, 18, 18, 0.2) 100%), url(https://images.unsplash.com/photo-1601362840436-b9b5f92843d7?q=80&w=2070&auto=format&fit=crop);
         }
-        .gallery-image img {
-            width: 350px;
-            display: block;
-            filter: grayscale(100%) contrast(1.2);
-        }
-        .gallery-text h2 {
-            font-family: var(--font-blueprint);
-            color: #fff;
-            font-size: 3rem;
+        
+        .hero-content {
+            grid-column: 1 / 7;
         }
 
-        .final-block {
-            border-left: 5px solid var(--color-text);
-            padding: 30px 40px;
-        }
-        .final-block p {
-            font-size: 1.5rem;
+        h1 {
+            font-family: var(--font-display);
+            font-size: 5rem;
             color: #fff;
+            margin: 0 0 20px 0;
+            line-height: 1.1;
         }
-        .final-block .contact-info {
-            font-family: var(--font-blueprint);
-            font-size: 2rem;
-            color: var(--color-line-work);
+
+        h1 span {
+            color: var(--color-accent);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            max-width: 450px;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            color: #fff;
+            margin: 0;
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        /* Bloky textu a obrázků */
+        .text-block {
+            grid-column: 1 / 6;
+            z-index: 2;
+        }
+
+        .text-block.align-right {
+            grid-column: 8 / 13;
+        }
+        
+        .text-block h3 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin: 0 0 20px 0;
+        }
+        .text-block p {
+            line-height: 1.9;
+        }
+
+        .image-block {
+            grid-column: 7 / 13;
+            grid-row: 1; /* Zajišťuje, že je na stejném řádku jako text */
+        }
+        .image-block.align-left {
+            grid-column: 1 / 7;
+        }
+
+        .image-block img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Citace */
+        .quote-block {
+            grid-column: 2 / 12;
+            text-align: center;
+            padding: 80px 0;
+        }
+        .quote-block p {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            line-height: 1.5;
+            color: #fff;
+            margin: 0;
+        }
+
+        /* Závěrečná sekce a kontakt */
+        .contact-section {
+            background-color: #000;
+            text-align: center;
+        }
+
+        .contact-box h2 {
+            margin-bottom: 20px;
+        }
+        .contact-box p {
+            font-size: 1.2rem;
+            color: var(--color-text-secondary);
+        }
+        .contact-info {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--color-accent);
             text-decoration: none;
             display: block;
-            margin-top: 20px;
+            margin: 40px 0;
+            transition: color 0.3s;
         }
-        .final-block .contact-info:hover { color: #fff; }
+        .contact-info:hover {
+            color: #fff;
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            font-size: 0.9rem;
+            color: #777;
+            padding-top: 80px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Media Queries pro responsivitu */
+        @media(max-width: 992px) {
+            h1 { font-size: 4rem; }
+            h2 { font-size: 3rem; }
+            .grid-magazine {
+                grid-template-columns: 1fr; /* Pod sebou na menších obrazovkách */
+            }
+            .text-block, .image-block, .text-block.align-right, .image-block.align-left, .hero-content {
+                grid-column: 1 / -1; /* Vždy na plnou šířku */
+            }
+            .image-block { margin-top: 40px; }
+            .hero { text-align: center; }
+            .hero p { margin: 0 auto 30px auto; }
+        }
+
     </style>
 </head>
 <body>
 
-<div class="blueprint-container">
-    <div class="blueprint-wrapper">
+    <header class="section hero">
+        <div class="container">
+            <div class="grid-magazine">
+                <div class="hero-content">
+                    <h1>Řemeslo, na které se dá <span>spolehnout.</span></h1>
+                    <p>Zapomeňte na kompromisy a krátkodobá řešení. Specializujeme se na hloubkové mechanické úpravy starších turbodieselů, které jim vrací život, charakter a funkční výkon.</p>
+                </div>
+            </div>
+        </div>
+    </header>
 
-        <!-- SEKCE 1: ÚVOD -->
-        <section class="blueprint-section">
-            <div class="title-block">
-                <h1>[NÁZEV VAŠÍ DÍLNY]</h1>
-                <p>Projekt: Mechanická optimalizace starších Turbodieselů</p>
-            </div>
-            <div class="scroll-prompt">POSUNOUT PRO PLÁN ➔</div>
-        </section>
-
-        <!-- SEKCE 2: TECHNICKÝ PLÁN -->
-        <section class="blueprint-section">
-            <div class="engine-drawing">
-                <!-- Obrázek motoru nebo jeho schéma. Musí být průhledný PNG. -->
-                <img src="https://www.pngmart.com/files/16/Car-Engine-Transparent-PNG.png" alt="Schéma motoru">
-            </div>
-            
-            <!-- Popisky k motoru -->
-            <div class="info-node node-1">
-                <h3>Spec. #1: INTERCOOLER</h3>
-                Ochlazení stlačeného vzduchu pro hustší náplň válců a vyšší účinnost spalování.
-            </div>
-            <div class="info-node node-2">
-                <h3>Spec. #2: ČERPADLO</h3>
-                Pečlivé mechanické seřízení dávky paliva pro optimální směs. Žádná elektronika.
-            </div>
-            <div class="info-node node-3">
-                <h3>Spec. #3: VEDENÍ</h3>
-                Zakázková výroba potrubí pro maximální průtok a minimální tlakové ztráty.
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2>Náš Postup: Jasný a Ověřený</h2>
+                
+                <div class="grid-magazine">
+                    <div class="text-block">
+                        <h3>1. Chlazení jako základ</h3>
+                        <p>Vše začíná u teploty. Ochlazením stlačeného vzduchu pomocí na míru integrovaného intercooleru dodáme motoru hustší, na kyslík bohatší směs. To je naprostý základ pro efektivní, výkonné a bezpečné spalování, které snižuje tepelný stres klíčových komponentů motoru.</p>
+                    </div>
+                    <div class="image-block">
+                        <!-- FOTO: Detailní záběr na motor nebo intercooler, může být barevný a ostrý -->
+                        <img src="https://images.unsplash.com/photo-1549488344-2453894b38d3?q=80&w=2070&auto=format&fit=crop" alt="Instalace intercooleru">
+                    </div>
+                </div>
             </div>
         </section>
         
-        <!-- SEKCE 3: DŮKAZY -->
-        <section class="blueprint-section">
-            <div class="gallery-box">
-                <div class="gallery-image">
-                    <img src="https://images.unsplash.com/photo-1617024318023-8c7c9c9f0b0c?q=80&w=1974&auto=format&fit=crop" alt="Ukázka sváru na potrubí">
-                </div>
-                <div class="gallery-text">
-                    <h2>DŮKAZ<br>MÍSTO<br>SLIBŮ.</h2>
+        <section class="section" style="background: #1a1a1a;">
+            <div class="container">
+                 <div class="grid-magazine">
+                    <div class="image-block align-left">
+                        <!-- FOTO: Černobílá fotka detailu svárů nebo nástrojů -->
+                        <img src="https://images.unsplash.com/photo-1617024318023-8c7c9c9f0b0c?q=80&w=1974&auto=format&fit=crop" style="filter: grayscale(100%) contrast(1.2);" alt="Svařování potrubí">
+                    </div>
+                    <div class="text-block align-right">
+                        <h3>2. Precizní seřízení</h3>
+                        <p>Když má motor správný vzduch, musí dostat i správné množství paliva. Seřizujeme mechanická vstřikovací čerpadla s chirurgickou precizností. Nejde nám o maximální hodnoty, ale o dokonalou rovnováhu mezi výkonem, spotřebou a spolehlivostí. Každý motor je unikátní a my k němu tak přistupujeme.</p>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <!-- SEKCE 4: KONTAKT -->
-        <section class="blueprint-section">
-             <div class="final-block">
-                <p>Plán je jasný. Pokud se vám líbí náš přístup, ozvěte se a probereme projekt pro Váš vůz.</p>
-                <a href="tel:[VAŠE TELEFONNÍ ČÍSLO]" class="contact-info">[VAŠE TELEFONNÍ ČÍSLO]</a>
-                <a href="mailto:[VÁŠ EMAIL]" class="contact-info">[VÁŠ EMAIL]</a>
-                <p style="font-size:1rem; color:#aaa; margin-top:50px;">Upozornění: Úpravy nemusí být schváleny pro provoz na poz. komunikacích.</p>
-             </div>
+        
+        <section class="section">
+            <div class="container">
+                <div class="grid-magazine">
+                     <div class="quote-block">
+                        <p>"Výsledkem není auto, které má jen víc koní. Je to auto, které lépe dýchá, má sílu v celém spektru otáček a dává vám pocit absolutní kontroly a spolehlivosti."</p>
+                    </div>
+                </div>
+            </div>
         </section>
-
-    </div>
-</div>
-
+        
+        <section class="section contact-section">
+            <div class="container contact-box">
+                <h2>Proberme váš projekt.</h2>
+                <p>Jste připraveni dát vašemu vozu to nejlepší? Ozvěte se.</p>
+                <a href="tel:[VAŠE TELEFONNÍ ČÍSLO]" class="contact-info">[VAŠE TELEFONNÍ ČÍSLO]</a>
+                
+                <div class="disclaimer">
+                    Upozorňujeme, že úpravy jsou individuální technickou změnou vozidla. Nejsou zapsány v TP a nemusí být schváleny pro provoz na poz. komunikacích, což může ovlivnit výsledek STK. O všech aspektech budete předem plně informováni.
+                    <p style="margin-top:10px;">© 2025 [Váš Název Firmy]</p>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
